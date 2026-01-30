@@ -1,0 +1,36 @@
+resources:
+  jobs:
+    PL_Lakebridge_Recon:
+      name: PL_Lakebridge_Recon_${bundle.target}
+
+      tasks:
+        # -------------------------------------------------
+        # Task 1: Read reconciliation config CSV
+        # -------------------------------------------------
+        - task_key: lakebridge_recon_config
+          existing_cluster_id: "0422-125216-1t83bm6v"
+
+          notebook_task:
+            notebook_path: notebooks/NB_recon_config.ipynb
+            base_parameters:
+              config_path: config/recon_config.csv   #  CSV passed here
+              target_env: ${bundle.target}
+
+          timeout_seconds: 600
+
+        # -------------------------------------------------
+        # Task 2: Run reconciliation logic
+        # -------------------------------------------------
+        - task_key: lakebridge_recon_runner
+          depends_on:
+            - task_key: lakebridge_recon_config
+
+          existing_cluster_id: "0422-125216-1t83bm6v"
+
+          notebook_task:
+            notebook_path: notebooks/NB_recon_runner.ipynb
+            base_parameters:
+              recon_config: "{{tasks.lakebridge_recon_config.values.result}}"
+              target_env: ${bundle.target}
+
+          timeout_seconds: 3600
