@@ -1,11 +1,12 @@
 bundle:
   name: recon-bundle
 
+# Professional practice: control what gets synced
 sync:
-  paths:
-    - notebooks
-    - resources
-    - config
+  include:
+    - notebooks/**
+    - resources/**
+    - config/*.csv
 
 targets:
   dev:
