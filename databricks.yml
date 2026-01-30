@@ -1,0 +1,18 @@
+bundle:
+  name: recon-bundle
+
+sync:
+  paths:
+    - notebooks
+    - resources
+    - config
+
+targets:
+  dev:
+    mode: development
+    default: true
+
+    workspace:
+      host: https://adb-7488500312027058.18.azuredatabricks.net
+      profile: DEFAULT
+      root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
