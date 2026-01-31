@@ -1,7 +1,9 @@
 bundle:
   name: recon-bundle
+include:
+  - resources/*.yml
 
-# Professional practice: control what gets synced
+# Control what gets synced to the workspace
 sync:
   include:
     - notebooks/**
