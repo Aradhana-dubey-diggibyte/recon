@@ -1,8 +1,10 @@
 bundle:
   name: recon-bundle
 
-include:
-  - resources/*.yml
+# DO NOT include resources manually
+# Databricks auto-loads everything under resources/
+# include:
+#   - resources/*.yml   ❌ REMOVE THIS
 
 # Control what gets synced to the workspace
 sync:
@@ -15,8 +17,6 @@ targets:
   dev:
     mode: development
     default: true
-
-    workspace:
-      host: https://adb-7488500312027058.18.azuredatabricks.net
-      profile: DEFAULT
+    
+  workspace:
       root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
