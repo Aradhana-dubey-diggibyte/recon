@@ -25,4 +25,4 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
           databricks bundle validate
-          databricks bundle deploy --target dev --force
+          databricks bundle deploy -t dev
