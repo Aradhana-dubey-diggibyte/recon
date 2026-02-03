@@ -3,6 +3,11 @@ resources:
     PL_Lakebridge_Recon:
       name: PL_Lakebridge_Recon_${bundle.target}
 
+      
+      permissions:
+        - level: CAN_MANAGE
+          user_name: amit.kundu@diggibyte.com
+
       schedule:
         quartz_cron_expression: "14 0 0 * * ?"
         timezone_id: "Asia/Calcutta"
@@ -20,16 +25,23 @@ resources:
 
           timeout_seconds: 600
 
-        - task_key: lakebridge_recon_runner
+        - task_key: lakebridge_recon_foreach
           depends_on:
             - task_key: lakebridge_recon_config
           run_if: ALL_SUCCESS
-          existing_cluster_id: "0422-125216-1t83bm6v"
 
-          notebook_task:
-            notebook_path: ../notebooks/NB_Recon_Runner.ipynb
-            base_parameters:
-              recon_config: "{{tasks.lakebridge_recon_config.values.result}}"
-              target_env: "${bundle.target}"
+          for_each_task:
+            inputs: "{{tasks.lakebridge_recon_config.values.recon_config}}"
+            concurrency: 3
+            
+            task:
+              task_key: lakebridge_recon_runner
+              existing_cluster_id: "0422-125216-1t83bm6v"
 
-          timeout_seconds: 3600
+              notebook_task:
+                notebook_path: ../notebooks/NB_Recon_Runner.ipynb
+                base_parameters:
+                  table_config: "{{input}}"
+                  target_env: "${bundle.target}"
+
+              timeout_seconds: 3600
