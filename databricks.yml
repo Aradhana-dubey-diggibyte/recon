@@ -1,18 +1,10 @@
 bundle:
   name: recon-bundle
-  
-sync:
-  exclude:
-    - config/recon_config.csv
 
 include:
   - resources/*.yml
   - notebooks/*.ipynb
-
-sync:
-  include:
-    - notebooks/*.ipynb
-    
+  - config/*.csv
 
 targets:
   dev:
