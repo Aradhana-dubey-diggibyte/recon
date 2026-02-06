@@ -9,8 +9,8 @@ bundle:
 # Control what gets synced to the workspace
 sync:
   include:
-    - notebooks/**
-    - resources/**
+    - notebooks/*.ipynb
+    - resources/**.yml
     - config/*.csv
 
 targets:
