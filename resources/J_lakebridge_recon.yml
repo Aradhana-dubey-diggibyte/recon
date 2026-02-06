@@ -1,26 +1,14 @@
-variables:
-  config_path:
-    description: "Path to recon config CSV file"
-    default: file:/Workspace/Users/aradhana.dubey@diggibyte.com/files/config/recon_config.csv
-
-targets:
-  dev:
-    variables:
-      config_path: file:/Workspace/Users/aradhana.dubey@diggibyte.com/files/config/recon_config.csv
-  
-  #prod:
-    #variables:
-      #config_path: /Volumes/learning_lab_catalog/lakebridge_recon/config/recon_config.csv
-
 resources:
   jobs:
     PL_Lakebridge_Recon:
       name: PL_Lakebridge_Recon_${bundle.target}
+
       
       permissions:
         - level: CAN_MANAGE
           user_name: aradhana.dubey@diggibyte.com
       
+
       schedule:
         quartz_cron_expression: "14 0 0 * * ?"
         timezone_id: "Asia/Calcutta"
@@ -33,7 +21,7 @@ resources:
           notebook_task:
             notebook_path: /Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/recon-bundle/${bundle.target}/files/notebooks/NB_recon_config
             base_parameters:
-              config_path: ${var.config_path}
+              config_path: /Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/recon-bundle/${bundle.target}/files/config/recon_config.csv
               target_env: "${bundle.target}"
 
           timeout_seconds: 600
