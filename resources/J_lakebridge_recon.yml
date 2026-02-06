@@ -6,7 +6,8 @@ resources:
       
       permissions:
         - level: CAN_MANAGE
-          user_name: amit.kundu@diggibyte.com
+          user_name: aradhana.dubey@diggibyte.com
+      
 
       schedule:
         quartz_cron_expression: "14 0 0 * * ?"
