@@ -1,12 +1,6 @@
 bundle:
   name: recon-bundle
 
-# DO NOT include resources manually
-# Databricks auto-loads everything under resources/
-#include:
-   #- resources/*.yml  
-
-# Control what gets synced to the workspace
 sync:
   include:
     - notebooks/*.ipynb
@@ -17,6 +11,5 @@ targets:
   dev:
     mode: development
     default: true
-    
-  workspace:
+    workspace:                 
       root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
