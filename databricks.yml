@@ -3,8 +3,8 @@ bundle:
 
 # DO NOT include resources manually
 # Databricks auto-loads everything under resources/
-include:
-   - resources/*.yml  
+#include:
+   #- resources/*.yml  
 
 # Control what gets synced to the workspace
 sync:
