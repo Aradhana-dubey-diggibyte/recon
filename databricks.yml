@@ -3,17 +3,16 @@ bundle:
 
 include:
   - resources/*.yml
-  - notebooks/*.ipynb      
-  - config/*.csv           
+  - notebooks/*.ipynb
 
 sync:
   include:
-  - notebooks/*.ipynb
-  - config/*.csv
+    - notebooks/*.ipynb
+    - config/*.csv
 
 targets:
   dev:
     mode: development
     default: true
-    workspace:                 
+    workspace:
       root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
