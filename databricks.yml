@@ -7,7 +7,7 @@ permissions:
           group_name: users 
 sync:
   include:
-    - notebooks/*.ipynb
+    - notebooks/*.
     - config/*.csv
 
 targets:

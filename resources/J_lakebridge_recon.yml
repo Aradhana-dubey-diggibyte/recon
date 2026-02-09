@@ -14,7 +14,7 @@ resources:
 
           notebook_task:
             # FIX: Use dynamic root_path and remove '/files/'
-            notebook_path: ${workspace.root_path}/files/notebooks/NB_recon_config.ipynb
+            notebook_path: ${workspace.root_path}/files/notebooks/NB_recon_config
             base_parameters:
               # FIX: Use dynamic root_path here too
               config_path: ${workspace.root_path}/config/recon_config.csv
@@ -37,7 +37,7 @@ resources:
 
               notebook_task:
                 # FIX: Use dynamic root_path
-                notebook_path: ${workspace.root_path}/files/notebooksNB_recon_runner.ipynb
+                notebook_path: ${workspace.root_path}/files/notebooks/NB_recon_runner
                 base_parameters:
                   table_config: "{{input}}"
                   target_env: "${bundle.target}"
