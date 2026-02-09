@@ -13,11 +13,11 @@ resources:
           existing_cluster_id: "0422-125216-1t83bm6v"
 
           notebook_task:
-            # FIX: Use dynamic root_path and remove '/files/'
-            notebook_path: ${workspace.root_path}/files/notebooks/NB_recon_config
+            
+            notebook_path: /Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/notebooks/NB_recon_config
             base_parameters:
-              # FIX: Use dynamic root_path here too
-              config_path: /Workspace${workspace.root_path}/files/config/recon_config.csv
+              
+              config_path: "file:///Workspace/Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/config/recon_config.csv"
               target_env: "${bundle.target}"
 
           timeout_seconds: 600
@@ -37,7 +37,7 @@ resources:
 
               notebook_task:
                 # FIX: Use dynamic root_path
-                notebook_path: ${workspace.root_path}/files/notebooks/NB_recon_runner
+                notebook_path: /Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/notebooks/NB_recon_runner
                 base_parameters:
                   table_config: "{{input}}"
                   target_env: "${bundle.target}"
