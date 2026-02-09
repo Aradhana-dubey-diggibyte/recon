@@ -26,4 +26,10 @@ jobs:
         run: |
           databricks bundle validate
           databricks bundle deploy -t dev --force
-
+      - name: Verify deployed files
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          echo "Listing deployed files..."
+          databricks workspace ls "/Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/recon-bundle/dev/files/config/" || echo "❌ Config folder NOT found!"
