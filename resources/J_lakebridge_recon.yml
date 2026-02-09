@@ -19,7 +19,7 @@ resources:
           existing_cluster_id: "0422-125216-1t83bm6v"
 
           notebook_task:
-            notebook_path: /files/notebooks/NB_recon_config.ipynb
+            notebook_path: ../files/notebooks/NB_recon_config.ipynb
             base_parameters:
               config_path: /Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/${bundle.name}/${bundle.target}/files/config/recon_config.csv
               target_env: "${bundle.target}"
@@ -40,7 +40,7 @@ resources:
               existing_cluster_id: "0422-125216-1t83bm6v"
 
               notebook_task:
-                notebook_path: /files/notebooks/NB_Recon_Runner.ipynb
+                notebook_path: ../files/notebooks/NB_Recon_Runner.ipynb
                 base_parameters:
                   table_config: "{{input}}"
                   target_env: "${bundle.target}"
