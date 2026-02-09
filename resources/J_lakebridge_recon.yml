@@ -3,11 +3,9 @@ resources:
     PL_Lakebridge_Recon:
       name: PL_Lakebridge_Recon_${bundle.target}
 
-      
       permissions:
         - level: CAN_MANAGE
           user_name: aradhana.dubey@diggibyte.com
-      
 
       schedule:
         quartz_cron_expression: "14 0 0 * * ?"
@@ -19,9 +17,11 @@ resources:
           existing_cluster_id: "0422-125216-1t83bm6v"
 
           notebook_task:
-            notebook_path: /Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/recon-bundle/${bundle.target}/files/notebooks/NB_recon_config.ipynb
+            # FIX: Use dynamic root_path and remove '/files/'
+            notebook_path: ${workspace.root_path}/notebooks/NB_recon_config.ipynb
             base_parameters:
-              config_path: /Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/${bundle.name}/${bundle.target}/files/config/recon_config.csv
+              # FIX: Use dynamic root_path here too
+              config_path: ${workspace.root_path}/config/recon_config.csv
               target_env: "${bundle.target}"
 
           timeout_seconds: 600
@@ -40,7 +40,8 @@ resources:
               existing_cluster_id: "0422-125216-1t83bm6v"
 
               notebook_task:
-                notebook_path: /Workspace/Users/aradhana.dubey@diggibyte.com/.bundle/recon-bundle/${bundle.target}/files/notebooks/NB_recon_runner.ipynb
+                # FIX: Use dynamic root_path
+                notebook_path: ${workspace.root_path}/notebooks/NB_recon_runner.ipynb
                 base_parameters:
                   table_config: "{{input}}"
                   target_env: "${bundle.target}"
