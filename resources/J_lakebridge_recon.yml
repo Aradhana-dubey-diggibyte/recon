@@ -36,7 +36,6 @@ resources:
               existing_cluster_id: "0422-125216-1t83bm6v"
 
               notebook_task:
-                # FIX: Use dynamic root_path
                 notebook_path: /Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/notebooks/NB_recon_runner
                 base_parameters:
                   table_config: "{{input}}"
