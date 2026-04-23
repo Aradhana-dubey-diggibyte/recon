@@ -11,12 +11,13 @@ resources:
       tasks:
         - task_key: lakebridge_recon_config
           existing_cluster_id: "0422-125216-1t83bm6v"
+          libraries:
+            - pypi:
+                package: "databricks-labs-lakebridge"
 
           notebook_task:
-            
             notebook_path: /Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/notebooks/NB_recon_config
             base_parameters:
-              
               config_path: "file:///Workspace/Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/config/recon_config.csv"
               target_env: "${bundle.target}"
 
@@ -30,10 +31,13 @@ resources:
           for_each_task:
             inputs: "{{tasks.lakebridge_recon_config.values.recon_config}}"
             concurrency: 3
-            
+
             task:
               task_key: lakebridge_recon_runner
               existing_cluster_id: "0422-125216-1t83bm6v"
+              libraries:
+                - pypi:
+                    package: "databricks-labs-lakebridge"
 
               notebook_task:
                 notebook_path: /Shared/.bundle/recon-bundle/dev/aradhana.dubey@diggibyte.com/files/notebooks/NB_recon_runner
